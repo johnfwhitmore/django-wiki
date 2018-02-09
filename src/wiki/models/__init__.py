@@ -65,9 +65,9 @@ if apps.is_installed('django_notify'):
         'django-wiki: You need to change from django_notify to django_nyt in INSTALLED_APPS and your urlconfig.')
 
 
-from django.core import urlresolvers  # noqa
+from django import urls  # noqa
 
-original_django_reverse = urlresolvers.reverse
+original_django_reverse = urls.reverse
 
 
 def reverse(*args, **kwargs):
@@ -100,8 +100,8 @@ def reverse(*args, **kwargs):
 
 # Now we redefine reverse method
 reverse_lazy = lazy(reverse, text_type)
-urlresolvers.reverse = reverse
-urlresolvers.reverse_lazy = reverse_lazy
+urls.reverse = reverse
+urls.reverse_lazy = reverse_lazy
 
 # Patch up other locations of the reverse function
 try:
