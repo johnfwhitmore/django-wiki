@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import difflib
 import logging
@@ -215,7 +215,7 @@ class Delete(FormView, ArticleMixin):
         return self.get_success_url()
 
     def get_success_url(self):
-        return redirect(self.next)
+        return redirect(self.__next__)
 
     def get_context_data(self, **kwargs):
         cannot_delete_children = False
@@ -294,7 +294,7 @@ class Edit(ArticleMixin, FormView):
     def get(self, request, *args, **kwargs):
         # Generate sidebar forms
         self.sidebar_forms = []
-        for form_id, (plugin, Form) in self.get_sidebar_form_classes().items():
+        for form_id, (plugin, Form) in list(self.get_sidebar_form_classes().items()):
             if Form:
                 form = Form(self.article, self.request.user)
                 setattr(form, 'form_id', form_id)
@@ -306,7 +306,7 @@ class Edit(ArticleMixin, FormView):
     def post(self, request, *args, **kwargs):
         # Generate sidebar forms
         self.sidebar_forms = []
-        for form_id, (plugin, Form) in self.get_sidebar_form_classes().items():
+        for form_id, (plugin, Form) in list(self.get_sidebar_form_classes().items()):
             if Form:
                 if form_id == self.request.GET.get('f', None):
                     form = Form(

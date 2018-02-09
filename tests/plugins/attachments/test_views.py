@@ -1,4 +1,4 @@
-from __future__ import print_function, unicode_literals
+
 
 from io import BytesIO
 
@@ -150,14 +150,14 @@ class AttachmentTests(RequireRootArticleMixin, ArticleWebTestUtils, DjangoClient
             '<span class="attachment"><a href=".*attachments/download/1/"'
             ' title="Click to download test\.txt">\s*test\.txt\s*</a>'
         )
-        self.assertRegexpMatches(output, expected)
+        self.assertRegex(output, expected)
 
     def test_render_missing(self):
         output = self.get_article('[attachment:2]')
         expected = (
             '<span class="attachment attachment-deleted">\s*Attachment with ID #2 is deleted.\s*</span>'
         )
-        self.assertRegexpMatches(output, expected)
+        self.assertRegex(output, expected)
 
     def test_render_title(self):
         output = self.get_article('[attachment:1 title:"Test title"]')
@@ -165,7 +165,7 @@ class AttachmentTests(RequireRootArticleMixin, ArticleWebTestUtils, DjangoClient
             '<span class="attachment"><a href=".*attachments/download/1/"'
             ' title="Click to download test\.txt">\s*Test title\s*</a>'
         )
-        self.assertRegexpMatches(output, expected)
+        self.assertRegex(output, expected)
 
     def test_render_title_size(self):
         output = self.get_article('[attachment:1 title:"Test title 2" size]')
@@ -173,4 +173,4 @@ class AttachmentTests(RequireRootArticleMixin, ArticleWebTestUtils, DjangoClient
             '<span class="attachment"><a href=".*attachments/download/1/"'
             ' title="Click to download test\.txt">\s*Test title 2 \[25[^b]bytes\]\s*</a>'
         )
-        self.assertRegexpMatches(output, expected)
+        self.assertRegex(output, expected)

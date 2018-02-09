@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 import bleach
 import markdown
@@ -41,7 +41,7 @@ class ArticleMarkdown(markdown.Markdown):
 
             attrs = dict()
             attrs.update(settings.MARKDOWN_HTML_ATTRIBUTES)
-            attrs.update(plugin_registry.get_html_attributes().items())
+            attrs.update(list(plugin_registry.get_html_attributes().items()))
 
             html = bleach.clean(
                 html,

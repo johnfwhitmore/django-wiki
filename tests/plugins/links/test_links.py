@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import markdown
 from django.core.urlresolvers import reverse_lazy

@@ -1,6 +1,6 @@
 """Abstraction layer to deal with Django related changes in order to keep
 compatibility with several Django versions simultaneously."""
-from __future__ import unicode_literals
+
 
 from django.conf import settings as django_settings
 
@@ -28,4 +28,4 @@ try:
     from urllib.parse import urljoin  # noqa
 except ImportError:
     # Python 2
-    from urlparse import urljoin  # noqa @UnusedImport
+    from urllib.parse import urljoin  # noqa @UnusedImport

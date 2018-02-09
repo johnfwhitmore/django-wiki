@@ -24,7 +24,7 @@ class WikiPaginator(Paginator):
             pages = [1]
         if left > 2:
             pages += [0]
-        pages += range(left, right)
+        pages += list(range(left, right))
         if right < self.num_pages:
             pages += [0]
         if self.num_pages > 1:

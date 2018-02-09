@@ -2,7 +2,7 @@
 Almost all test cases covers both tag calling and template using.
 """
 
-from __future__ import print_function, unicode_literals
+
 
 from django.conf import settings as django_settings
 from django.contrib.contenttypes.models import ContentType
@@ -109,7 +109,7 @@ class ArticleForObjectTemplatetagTest(TemplateTestCase):
         self.assertIsNone(wiki_tags._cache[model])
         self.assertEqual(len(wiki_tags._cache), 1)
 
-        self.assertNotIn('spam', wiki_tags._cache.values())
+        self.assertNotIn('spam', list(wiki_tags._cache.values()))
 
     def test_obj_in__cache_and_articleforobjec_is_exist(self):
 

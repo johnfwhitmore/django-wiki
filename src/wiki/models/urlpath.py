@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import print_function, unicode_literals
+
 
 import logging
 import warnings
@@ -123,10 +123,7 @@ class URLPath(MPTTModel):
 
         # All ancestors except roots
         ancestors = list(
-            filter(
-                lambda ancestor: ancestor.parent is not None,
-                self.cached_ancestors
-            )
+            [ancestor for ancestor in self.cached_ancestors if ancestor.parent is not None]
         )
         slugs = [obj.slug if obj.slug else "" for obj in ancestors + [self]]
 

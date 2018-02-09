@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import random
 import string
@@ -247,7 +247,7 @@ class EditForm(forms.Form, SpamProtectionMixin):
                         self.presumed_revision) == str(
                         self.initial_revision.id):
                     newdata = {}
-                    for k, v in data.items():
+                    for k, v in list(data.items()):
                         newdata[k] = v
                     newdata['current_revision'] = self.initial_revision.id
                     newdata['content'] = simple_merge(

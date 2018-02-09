@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import re
 
@@ -115,7 +115,7 @@ def get_content_snippet(content, keyword, max_words=30):
         # remove newlines
         content = content.replace("\n", " ").split(" ")
 
-        return list(filter(lambda x: x != "", content))
+        return list([x for x in content if x != ""])
 
     max_words = int(max_words)
 

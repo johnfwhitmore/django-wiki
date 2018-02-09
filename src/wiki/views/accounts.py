@@ -10,7 +10,7 @@ SETTINGS.LOGIN_URL
 SETTINGS.LOGOUT_URL
 """
 
-from __future__ import unicode_literals
+
 
 from django.conf import settings as django_settings
 from django.contrib import messages
